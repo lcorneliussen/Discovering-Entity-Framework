@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PeopleModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="PeopleModelStoreContainer">
+          <EntitySet Name="AllPeople" EntityType="PeopleModel.Store.AllPeople" store:Type="Views" store:Schema="dbo" store:Name="AllPeople">
+            <DefiningQuery>SELECT 
+      [AllPeople].[Id] AS [Id], 
+      [AllPeople].[Name] AS [Name], 
+      [AllPeople].[Age] AS [Age]
+      FROM [dbo].[AllPeople] AS [AllPeople]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AllPeopleCars" EntityType="PeopleModel.Store.AllPeopleCars" store:Type="Views" store:Schema="dbo" store:Name="AllPeopleCars">
+            <DefiningQuery>SELECT 
+      [AllPeopleCars].[PersonId] AS [PersonId], 
+      [AllPeopleCars].[Model] AS [Model], 
+      [AllPeopleCars].[Id] AS [Id]
+      FROM [dbo].[AllPeopleCars] AS [AllPeopleCars]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="AllPeople">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+        </EntityType>
+        <EntityType Name="AllPeopleCars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="PersonId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PeopleModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="PeopleModelConnection">
+          <EntitySet Name="AllPeople" EntityType="PeopleModel.Person" />
+          <EntitySet Name="AllCars" EntityType="PeopleModel.Car" />
+          <AssociationSet Name="AllPeopleAllPeopleCars" Association="PeopleModel.AllPeopleAllPeopleCars">
+            <End Role="AllPeople" EntitySet="AllPeople" />
+            <End Role="AllPeopleCars" EntitySet="AllCars" /></AssociationSet></EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cars" Relationship="PeopleModel.AllPeopleAllPeopleCars" FromRole="AllPeople" ToRole="AllPeopleCars" /></EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Id" />
+            </Key>
+          <Property Name="Model" Type="String" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="PeopleModel.AllPeopleAllPeopleCars" FromRole="AllPeopleCars" ToRole="AllPeople" /></EntityType>
+        <Association Name="AllPeopleAllPeopleCars">
+          <End Type="PeopleModel.Person" Role="AllPeople" Multiplicity="1" />
+          <End Type="PeopleModel.Car" Role="AllPeopleCars" Multiplicity="*" />
+          </Association></Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="PeopleModelStoreContainer" CdmEntityContainer="PeopleModelConnection">
+          <EntitySetMapping Name="AllPeople">
+            <EntityTypeMapping TypeName="IsTypeOf(PeopleModel.Person)">
+              <MappingFragment StoreEntitySet="AllPeople">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllCars">
+            <EntityTypeMapping TypeName="IsTypeOf(PeopleModel.Car)">
+              <MappingFragment StoreEntitySet="AllPeopleCars">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="AllPeopleAllPeopleCars" TypeName="PeopleModel.AllPeopleAllPeopleCars" StoreEntitySet="AllPeopleCars">
+            <EndProperty Name="AllPeopleCars">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="AllPeople">
+              <ScalarProperty Name="Id" ColumnName="PersonId" /></EndProperty>
+            </AssociationSetMapping></EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="SimpleModel" ZoomLevel="100">
+        <EntityTypeShape EntityType="PeopleModel.Person" Width="1.5" PointX="0.75" PointY="0.75" Height="1.6156835937500005" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeopleModel.Car" Width="1.5" PointX="3.125" PointY="1.125" Height="1.59568359375" />
+        <AssociationConnector Association="PeopleModel.AllPeopleAllPeopleCars">
+          <ConnectorPoint PointX="2.25" PointY="1.8314925130208335" />
+          <ConnectorPoint PointX="3.125" PointY="1.8314925130208335" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

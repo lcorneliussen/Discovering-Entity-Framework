@@ -1,0 +1,9 @@
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\obj\Debug\ResolveAssemblyReference.cache
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\bin\Debug\Braindrops.DiscoveringEF.dll.config
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\bin\Debug\Braindrops.DiscoveringEF.dll
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\bin\Debug\Braindrops.DiscoveringEF.pdb
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\bin\Debug\nunit.framework.dll
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\bin\Debug\NUnitEx.dll
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\bin\Debug\nunit.framework.xml
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\obj\Debug\Braindrops.DiscoveringEF.dll
+C:\Workbench\Braindrops\Discovering-Entity-Framework\Braindrops.DiscoveringEF\obj\Debug\Braindrops.DiscoveringEF.pdb
