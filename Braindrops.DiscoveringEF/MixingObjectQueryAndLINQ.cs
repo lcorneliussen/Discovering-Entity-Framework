@@ -1,13 +1,3 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MixingObjectQueryAndLINQ.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   Defines the MixingObjectQueryAndLINQ type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-
 using System;
 using System.Linq;
 using NUnit.Framework;
