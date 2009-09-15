@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MixingObjectQueryAndLINQ.cs" />
+    <Compile Include="SampleQueries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleModel.Designer.cs">
       <AutoGen>True</AutoGen>
