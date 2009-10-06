@@ -82,5 +82,22 @@ namespace Braindrops.DiscoveringEF
             }
             Console.WriteLine("*/");
         }
+
+        [Test, ExpectedException(typeof(NotSupportedException))]
+        public void AllPeople_ListNamesUsingLINQPlusObjectQuery()
+        {
+            var query = (ObjectQuery <Person>) 
+                        from p in model.AllPeople
+                        select p;
+
+            query = query.Where("it.Age > 30");
+
+            Console.WriteLine("/* Results");
+            foreach (var name in query.Select(p => p.Name))
+            {
+                Console.WriteLine("*  " + name);
+            }
+            Console.WriteLine("*/");
+        }
     }
 }
