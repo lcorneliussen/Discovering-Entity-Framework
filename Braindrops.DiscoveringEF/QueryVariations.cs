@@ -83,7 +83,7 @@ namespace Braindrops.DiscoveringEF
             Console.WriteLine("*/");
         }
 
-        [Test]
+        [Test, ExpectedException(typeof(NotSupportedException))]
         public void AllPeople_ListNamesUsingLINQPlusObjectQuery()
         {
             var query = (ObjectQuery <Person>) 
