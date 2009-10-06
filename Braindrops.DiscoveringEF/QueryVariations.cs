@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace Braindrops.DiscoveringEF
 {
     [TestFixture]
-    public class ScalarSelects
+    public class QueryVariations
     {
         private PeopleModelConnection model;
 
@@ -23,22 +23,34 @@ namespace Braindrops.DiscoveringEF
         }
 
         [Test]
-        public void AllPeople_SelectAll_ShouldBe4()
-        {
-            model.AllPeople.Count().Should().Be.EqualTo(4);
-        }
-
-        [Test]
         public void AllPeople_ListNamesUsingLINQ()
         {
             var query = from p in model.AllPeople
                         where p.Age > 30
                         select p.Name;
 
+            Console.WriteLine("/* Results");
             foreach (var name in query)
             {
-                Console.WriteLine(name);
+                Console.WriteLine("*  " + name);
             }
+            Console.WriteLine("*/");
+        }
+
+        [Test]
+        public void AllPeople_ListNamesUsingLINQ_Parameters()
+        {
+            var age = 30;
+            var query = from p in model.AllPeople
+                        where p.Age > age
+                        select p.Name;
+
+            Console.WriteLine("/* Results");
+            foreach (var name in query)
+            {
+                Console.WriteLine("*  " + name);
+            }
+            Console.WriteLine("*/");
         }
 
         [Test]
@@ -48,10 +60,12 @@ namespace Braindrops.DiscoveringEF
                 .Where("it.Age > @age", new ObjectParameter("age", 30))
                 .SelectValue<string>("it.Name");
 
-            foreach (string name in query)
+            Console.WriteLine("/* Results");
+            foreach (var name in query)
             {
-                Console.WriteLine(name);
+                Console.WriteLine("*  " + name);
             }
+            Console.WriteLine("*/");
         }
 
         [Test]
@@ -61,10 +75,12 @@ namespace Braindrops.DiscoveringEF
                 "SELECT VALUE p.Name FROM AllPeople AS p WHERE p.Age > @age", 
                 new ObjectParameter("age", 30));
 
-            foreach (string name in query)
+            Console.WriteLine("/* Results");
+            foreach (var name in query)
             {
-                Console.WriteLine(name);
+                Console.WriteLine("*  " + name);
             }
+            Console.WriteLine("*/");
         }
     }
 }

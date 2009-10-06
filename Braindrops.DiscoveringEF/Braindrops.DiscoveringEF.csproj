@@ -67,7 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SimpleModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ScalarSelects.cs" />
+    <Compile Include="QueryVariations.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="SimpleModel.edmx">
