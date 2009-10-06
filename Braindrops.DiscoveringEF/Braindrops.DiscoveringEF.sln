@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 10
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Braindrops.DiscoveringEF", "Braindrops.DiscoveringEF.csproj", "{1A75A601-0DC9-49A7-AA6E-2DD0BE42769A}"
 EndProject
 Global
